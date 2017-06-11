@@ -28,22 +28,28 @@ class TestShoppingBasket < MiniTest::Test
     assert_equal(2, basket.items.count)
   end
 
-  def test_basket_can_give_total_price
+  def test_basket_can_be_emptied
     basket = ShoppingBasket.new
     item = Item.new("Beer", 200)
     item2 = Item.new("Scotch", 2000)
     basket.add item
     basket.add item2
+    basket.empty
 
-    assert_equal(2200, basket.total_price)
+    assert_equal(0, basket.items.count)
   end
 
-  def test_basket_can_give_total_price_not_hardcoded
+  def test_one_item_can_be_removed
     basket = ShoppingBasket.new
+    item = Item.new("Beer", 200)
     item2 = Item.new("Scotch", 2000)
+    basket.add item
     basket.add item2
+    basket.remove item
 
-    assert_equal(2000, basket.total_price)
+    assert_equal(1, basket.items.count)
   end
+
+
 
 end

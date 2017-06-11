@@ -9,13 +9,16 @@ class ShoppingBasket
     @items.push item
   end
 
-  def total_price
-    total = 0
-      for item in @items do
-        total += item.price
-      end
-    return total
+  def empty
+    @items = []
   end
+
+  def remove item
+    if @items.include? item
+      @items.delete item
+    end
+  end
+
 
 
 end
