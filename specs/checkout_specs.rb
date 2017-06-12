@@ -18,7 +18,7 @@ class TestCheckout < MiniTest::Test
     assert_equal(2200, checkout.total_price( basket))
   end
 
-  def test_basket_can_give_total_price_not_hardcoded
+  def test_basket_total_price_not_hardcoded
     basket = ShoppingBasket.new
     item2 = Item.new("Scotch", 2000)
     checkout = Checkout.new
